@@ -1,0 +1,11 @@
+recursion
+1.recursive function will always call itself
+2.recursive function will have a stopping criteria or base case
+
+between recursion and iteration, iteration is better because recursion creates a stack
+which adds extra space and time complexity
+
+to check at home
+palindrome num iteration code
+https://www.tutorialspoint.com/cplusplus-program-to-find-g-c-d-using-recursion#:~:text=42%20is%2021-,In%20the%20above%20program%2C%20gcd()%20is%20a%20recursive%20function,values%20b%20and%20a%25b.
+count series

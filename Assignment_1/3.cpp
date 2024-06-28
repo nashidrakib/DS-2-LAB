@@ -1,32 +1,74 @@
-#include<iostream>
+/*
+You are given a number N. Your task is to determine if the binary
+representation of N is a palindrome.
+
+Input Format:
+The input contains a single integer N.
+
+Output Format:
+Print "YES" if the binary representation of N is a palindrome,
+otherwise print "NO".
+
+Input   Output
+9       YES
+4       NO
+*/
+#include <iostream>
+#include <string>
+#include <algorithm>
 using namespace std;
 
-string processed(string str){
-    string filtered;
-    for(char c : str){
-        if(!isspace(c)){
-            filtered += tolower(c);
+string toBinary(int n)
+{
+    string binary = "";
+    while (n > 0)
+    {
+        if (n % 2 == 0)
+        {
+            binary += '0';
         }
+        else if (n % 2 == 1)
+        {
+            binary += '1';
+        }
+        n /= 2;
     }
-    return filtered;
+    reverse(binary.begin(), binary.end());
+
+    return binary;
 }
 
-bool palindrome(string str, int i){
-    if(i > str.size()/2){
-        return true;
+bool toPalindrome(string s)
+{
+    int L = 0;
+    int R = s.length() - 1;
+    while (L < R)
+    {
+        if (s[L] != s[R])
+        {
+            return false;
+        }
+        L++;
+        R--;
     }
-
-    return str[i] == str[str.size()-i-1] && palindrome(str, i+1);
+    return true;
 }
 
-int main(){
-    string str = "Too Bad";
-    int i = 0;
-    string processedStr = processed(str);
-    if(palindrome(processedStr, i)){
-        cout<<"yes"<<endl;
-    } else {
-        cout<<"no"<<endl;
+int main()
+{
+    int n;
+    cout << "insert a number: ";
+    cin >> n;
+
+    // cout << "Binary is: " << toBinary(n) << endl;
+
+    if (toPalindrome(toBinary(n)))
+    {
+        cout << "YES" << endl;
+    }
+    else
+    {
+        cout << "NO" << endl;
     }
 
     return 0;

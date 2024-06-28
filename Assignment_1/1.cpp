@@ -1,3 +1,11 @@
+/*
+Reverse a string using a recursive method
+
+Input    Output
+Hello    olleH
+Data     ataD
+*/
+
 #include <iostream>
 using namespace std;
 

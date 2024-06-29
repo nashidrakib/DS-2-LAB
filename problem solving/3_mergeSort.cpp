@@ -70,50 +70,106 @@
 // }
 
 // abdul bari merge sort
+// #include <iostream>
+// using namespace std;
+
+// void merge(int A[], int l, int mid, int r)
+// {
+//     int i = l, j = mid + 1, k = l;
+//     int B[100];
+//     while (i <= mid && j <= r)
+//     {
+//         if (A[i] < A[j])
+//             B[k++] = A[i++];
+//         else
+//             B[k++] = A[j++];
+//     }
+//     for (; i <= mid; i++)
+//         B[k++] = A[i];
+//     for (; j <= r; j++)
+//         B[k++] = A[j];
+//     for (i = l; i <= r; i++)
+//         A[i] = B[i];
+// }
+
+// void mergeSort(int a[], int l, int r)
+// {
+//     int mid;
+//     if (l < r)
+//     {
+//         mid = (l + r) / 2;
+//         mergeSort(a, l, mid);
+//         mergeSort(a, mid + 1, r);
+//         merge(a, l, mid, r);
+//     }
+// }
+
+// int main()
+// {
+//     int arr[] = {5, 6, 12, 1, 9, 10};
+//     int size = sizeof(arr) / sizeof(arr[0]);
+//     mergeSort(arr, 0, size - 1);
+//     for (int i = 0; i < size; i++)
+//     {
+//         cout << arr[i] << " ";
+//     }
+//     cout << endl;
+
+//     return 0;
+// }
+
+// merge sort
 #include <iostream>
 using namespace std;
 
-void merge(int A[], int l, int mid, int r)
+void merge(int arr[], int l, int m, int r)
 {
-    int i = l, j = mid + 1, k = l;
-    int B[100];
-    while (i <= mid && j <= r)
-    {
-        if (A[i] < A[j])
-            B[k++] = A[i++];
-        else
-            B[k++] = A[j++];
-    }
-    for (; i <= mid; i++)
-        B[k++] = A[i];
-    for (; j <= r; j++)
-        B[k++] = A[j];
-    for (i = l; i <= r; i++)
-        A[i] = B[i];
-}
+    int i = l, j = m + 1, k = 0, brr[r - l + 1];
 
-void mergeSort(int a[], int l, int r)
+    while (i <= m && j <= r)
+    {
+        if (arr[i] < arr[j])
+        {
+            brr[k++] = arr[i++];
+        }
+        else
+        {
+            brr[k++] = arr[j++];
+        }
+    }
+    while (i <= m)
+    {
+        brr[k++] = arr[i++];
+    }
+    while (j <= r)
+    {
+        brr[k++] = arr[j++];
+    }
+
+    for (i = l, k = 0; i <= r; i++, k++)
+    {
+        arr[i] = brr[k];
+    }
+}
+void mergeSort(int arr[], int l, int r)
 {
-    int mid;
     if (l < r)
     {
-        mid = (l + r) / 2;
-        mergeSort(a, l, mid);
-        mergeSort(a, mid + 1, r);
-        merge(a, l, mid, r);
+        int m = l + (r - l) / 2;
+        mergeSort(arr, l, m);
+        mergeSort(arr, m + 1, r);
+
+        merge(arr, l, m, r);
     }
 }
-
 int main()
 {
-    int arr[] = {5, 6, 12, 1, 9, 10};
-    int size = sizeof(arr) / sizeof(arr[0]);
-    mergeSort(arr, 0, size - 1);
-    for (int i = 0; i < size; i++)
+    int arr[] = {38, 27, 43, 10};
+    int n = sizeof(arr) / sizeof(arr[0]);
+    mergeSort(arr, 0, n - 1);
+
+    for (int i = 0; i < n; i++)
     {
         cout << arr[i] << " ";
     }
-    cout << endl;
-
-    return 0;
 }

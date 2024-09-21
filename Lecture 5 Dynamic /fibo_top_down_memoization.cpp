@@ -15,14 +15,14 @@ int Fib(int n){
     
 }
 
-int main(){
+/*int main(){
     int n;
     cout<<"Enter the value of n: ";
     cin>>n;
     vector<int> dp(n-1)
-    if(n<=1)
+    /if(n<=1)
         cout<<Fib[n]<<=<<n<<;
     else
         cout<<Fib[n]<<=<<n<<;
     cout<<endl;
-}
+}*/
